@@ -8,6 +8,6 @@ namespace RiddleMeThisModel
 {
     public class Points
     {
-        public int score, maxScore = 3;
+        public int score;
     }
 }

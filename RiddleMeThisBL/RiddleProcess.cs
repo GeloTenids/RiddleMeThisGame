@@ -12,10 +12,9 @@ namespace RiddleMeThisBL
     {
         public bool getAnswer(string answer) 
         {
-            answer.ToLower();
             RiddleData riddleData = new RiddleData();
             bool result = new bool();
-            foreach(var answers in riddleData.riddles) 
+            foreach(var answers in riddleData.GetRiddles()) 
             {
                 if(answers.answer.Equals(answer.ToLower())) 
                 {
@@ -32,13 +31,7 @@ namespace RiddleMeThisBL
         public List<Riddles> getRiddle() 
         {
             RiddleData riddleData = new RiddleData();
-            return riddleData.riddles;
-        }
-        public List<User> setUserAndScore(string user, int score) 
-        {
-            RiddleData data = new RiddleData(user, score);
-
-            return data.CreateCurrentUser(user, score);
+            return riddleData.GetRiddles();
         }
     }
 }
