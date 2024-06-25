@@ -14,8 +14,51 @@ namespace RiddleMeThisUI
             UserProcess userProcess = new UserProcess();
             Points point = new Points();
             int score = 0;
-            string user = Login();
-           
+            string user = null;
+
+            Console.Write("RIDDLE ME THIS\nA. LOAD GAME\nB. NEW GAME\nENTER LETTER: ");
+            char choice = Convert.ToChar(Console.ReadLine());
+
+            if (choice.Equals('a') || choice.Equals('A'))
+            {
+                foreach (var users in userProcess.getUser())
+                {
+                    Console.WriteLine(users.userName.ToUpper() + "\n");
+                }
+                Console.Write("CHOOSE YOUR USER: ");
+                user = Console.ReadLine();
+
+                if (userProcess.verifyUser(user.ToLower()))
+                {
+                    Console.WriteLine("CURRENT SCORE: " + userProcess.getScore(user).score);
+                    point.score = userProcess.getScore(user).score;
+                }
+                else
+                {
+                    Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
+                    Main(args);
+                }
+            }
+            else if (choice.Equals('B') || choice.Equals('b'))
+            {
+                Console.Write("ENTER YOUR NAME: ");
+                user = Console.ReadLine();
+                if (userProcess.verifyUser(user.ToLower()) == true)
+                {
+                    Console.WriteLine("EXISTING USER!");
+                }
+                else if (userProcess.verifyUser(user.ToLower()) == false)
+                {
+                    userProcess.AddUserAndScore(user.ToLower(), point);
+                    Console.WriteLine("WELCOME " + user.ToUpper() + "!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("CHOOSE A LETTER, DUMDUM");
+                Main(args);
+            }
+
 
             foreach (var riddles in riddleProcess.getRiddle())
             {
@@ -35,7 +78,6 @@ namespace RiddleMeThisUI
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
                     }
-
                 }
                 else if (riddles.number == 2)
                 {
@@ -53,6 +95,7 @@ namespace RiddleMeThisUI
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
                     }
+                    
                 }
 
                 else if (riddles.number == 3)
@@ -66,11 +109,14 @@ namespace RiddleMeThisUI
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS CORRECT");
                         score++;
+                        break;
                     }
                     else
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
+                        break;
                     }
+                    
                 }
             }
 
