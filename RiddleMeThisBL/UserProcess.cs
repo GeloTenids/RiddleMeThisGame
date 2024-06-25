@@ -32,11 +32,16 @@ namespace RiddleMeThisBL
             User users = new User { userName = user, points = score };
             userData.UpdateUser(users);
         }
-        public void DeleteUser(string user)
+        public bool DeleteUser(string user)
         {
+            bool result = false;
             UserData userData = new UserData();
             User users = new User { userName = user};
-            userData.DeleteUser(users);
+            if (userData.DeleteUser(users) == 1) 
+            {
+                result = true;
+            }
+            return result;
         }
         public Points getScore(string user) 
         {

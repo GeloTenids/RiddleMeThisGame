@@ -16,14 +16,28 @@ namespace RiddleMeThisUI
             int score = 0;
             string user = null;
 
-            Console.Write("RIDDLE ME THIS\nA. LOAD GAME\nB. NEW GAME\nENTER LETTER: ");
+            Console.WriteLine("                                              ");
+            Console.WriteLine("    _________                                 ");
+            Console.WriteLine("   /  _____  \\                               ");
+            Console.WriteLine("  /  /     \\  \\                             ");
+            Console.WriteLine(" |  |       |  |                              ");
+            Console.WriteLine("  \\  \\_____/  /                             ");
+            Console.WriteLine("   \\_________/                               ");
+            Console.WriteLine("   /  _____  \\                               ");
+            Console.WriteLine("  RIDDLE ME THIS                              ");
+            Console.WriteLine(" |A. CHOOSE USER                              ");
+            Console.WriteLine("  B. NEW USER \\                              ");
+            Console.WriteLine("  C. DELETE USER\\                              ");
+            Console.Write("   \\_CHOOSE===: ");
             char choice = Convert.ToChar(Console.ReadLine());
 
             if (choice.Equals('a') || choice.Equals('A'))
             {
+                Console.WriteLine("\nUSERS:\n");
+
                 foreach (var users in userProcess.getUser())
                 {
-                    Console.WriteLine(users.userName.ToUpper() + "\n");
+                    Console.WriteLine("* " + users.userName.ToUpper() + "\n");
                 }
                 Console.Write("CHOOSE YOUR USER: ");
                 user = Console.ReadLine();
@@ -41,7 +55,7 @@ namespace RiddleMeThisUI
             }
             else if (choice.Equals('B') || choice.Equals('b'))
             {
-                Console.Write("ENTER YOUR NAME: ");
+                Console.Write("\nENTER YOUR NAME: ");
                 user = Console.ReadLine();
                 if (userProcess.verifyUser(user.ToLower()) == true)
                 {
@@ -51,6 +65,31 @@ namespace RiddleMeThisUI
                 {
                     userProcess.AddUserAndScore(user.ToLower(), point);
                     Console.WriteLine("WELCOME " + user.ToUpper() + "!");
+                }
+            }
+            else if (choice.Equals('C') || choice.Equals('c')) 
+            {
+                Console.WriteLine("\nUSERS:\n");
+
+                foreach (var users in userProcess.getUser())
+                {
+                    Console.WriteLine("* " + users.userName.ToUpper() + "\n");
+                }
+                Console.Write("CHOOSE USER TO REMOVE: ");
+                user = Console.ReadLine();
+
+                if (userProcess.verifyUser(user.ToLower()))
+                {
+                    if (userProcess.DeleteUser(user.ToLower())) 
+                    {
+                        Console.WriteLine("USER REMOVED...");
+                        Main(args);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
+                    Main(args);
                 }
             }
             else
@@ -64,7 +103,19 @@ namespace RiddleMeThisUI
             {
                 if (riddles.number == 1)
                 {
-                    Console.Write($"\n\nFIRST RIDDLE:\n{riddles.question}\nANSWER: ");
+                    Console.WriteLine("    _________                                 ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  /  /     \\  \\                             ");
+                    Console.WriteLine(" |  |       |  |                              ");
+                    Console.WriteLine("  \\  \\_____/  /                             ");
+                    Console.WriteLine("   \\_________/                               ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  RIDDLE ME THIS                              ");
+                    Console.WriteLine(" |FIRST RIDDLE:                              ");
+                    Console.WriteLine($" |{riddles.question}\\                              ");
+                    Console.Write(" \\ ANSWER===: ");
+                    //Console.Write("   \\ ANSWER===: ");
+                    //Console.Write($"\n\nFIRST RIDDLE:\n{riddles.question}\nANSWER: ");
                     string answer = Console.ReadLine();
 
                     bool result = riddleProcess.getAnswer(answer);
@@ -81,7 +132,17 @@ namespace RiddleMeThisUI
                 }
                 else if (riddles.number == 2)
                 {
-                    Console.Write($"\n\nSECOND RIDDLE:\n{riddles.question}\nANSWER: ");
+                    Console.WriteLine("    _________                                 ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  /  /     \\  \\                             ");
+                    Console.WriteLine(" |  |       |  |                              ");
+                    Console.WriteLine("  \\  \\_____/  /                             ");
+                    Console.WriteLine("   \\_________/                               ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  RIDDLE ME THIS                              ");
+                    Console.WriteLine(" |FIRST RIDDLE:                              ");
+                    Console.WriteLine($" |{riddles.question}\\                              ");
+                    Console.Write(" \\ ANSWER===: ");
                     string answer = Console.ReadLine();
 
                     bool result = riddleProcess.getAnswer(answer);
@@ -100,7 +161,17 @@ namespace RiddleMeThisUI
 
                 else if (riddles.number == 3)
                 {
-                    Console.Write($"\n\nTHIRD RIDDLE:\n{riddles.question}\nANSWER: ");
+                    Console.WriteLine("    _________                                 ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  /  /     \\  \\                             ");
+                    Console.WriteLine(" |  |       |  |                              ");
+                    Console.WriteLine("  \\  \\_____/  /                             ");
+                    Console.WriteLine("   \\_________/                               ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  RIDDLE ME THIS                              ");
+                    Console.WriteLine(" |FIRST RIDDLE:                              ");
+                    Console.WriteLine($" |{riddles.question}\\                              ");
+                    Console.Write(" \\ ANSWER===: ");
                     string answer = Console.ReadLine();
 
                     bool result = riddleProcess.getAnswer(answer);
@@ -121,21 +192,44 @@ namespace RiddleMeThisUI
             }
             //Score
             point.score = score;
+            ScoreCount(user, point);
+            //userProcess.UpdateScore(user.ToLower(), point);
+            //int currentScore = Convert.ToInt32(userProcess.getScore(user).score);
+            //if (currentScore == 3)
+            //{
+            //    Console.WriteLine("EXCELLENT " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
+            //}
+            //else if (currentScore == 2)
+            //{
+            //    Console.WriteLine("GOOD JOB " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
+            //}
+            //else if (currentScore <= 1)
+            //{
+            //    Console.WriteLine("NICE TRY " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
+            //}
+            //else 
+            //{
+            //    Console.WriteLine("??");
+            //}
+        }
+        private static void ScoreCount(string user, Points point)
+        {
+            UserProcess userProcess = new UserProcess();
             userProcess.UpdateScore(user.ToLower(), point);
-            int currentScore = Convert.ToInt32(userProcess.getScore(user).score);
-            if (currentScore == 3)
+            //int currentScore = Convert.ToInt32(userProcess.getScore(user).score);
+            if (Convert.ToInt32(userProcess.getScore(user).score) == 3)
             {
                 Console.WriteLine("EXCELLENT " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
             }
-            else if (currentScore == 2)
+            else if (Convert.ToInt32(userProcess.getScore(user).score) == 2)
             {
                 Console.WriteLine("GOOD JOB " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
             }
-            else if (currentScore <= 1)
+            else if (Convert.ToInt32(userProcess.getScore(user).score) <= 1)
             {
                 Console.WriteLine("NICE TRY " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
             }
-            else 
+            else
             {
                 Console.WriteLine("??");
             }
