@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiddleMeThisModel", "RiddleMeThisModel\RiddleMeThisModel.csproj", "{C218875A-F6CF-4EBE-ABE0-BC786CD9324E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiddleMeThisModel", "RiddleMeThisModel\RiddleMeThisModel.csproj", "{C218875A-F6CF-4EBE-ABE0-BC786CD9324E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiddleMeThisDL", "RiddleMeThisDL\RiddleMeThisDL.csproj", "{07A64182-E485-49CD-80E3-DC0B093D0F1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiddleMeThisDL", "RiddleMeThisDL\RiddleMeThisDL.csproj", "{07A64182-E485-49CD-80E3-DC0B093D0F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiddleMeThisBL", "RiddleMeThisBL\RiddleMeThisBL.csproj", "{6AE5A703-5666-41DE-B8A5-4ABB67B87BCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiddleMeThisBL", "RiddleMeThisBL\RiddleMeThisBL.csproj", "{6AE5A703-5666-41DE-B8A5-4ABB67B87BCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiddleMeThisUI", "RiddleMeThisUI\RiddleMeThisUI.csproj", "{6F1E78D0-FA5D-4C85-A9A3-06DD920843C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiddleMeThisUI", "RiddleMeThisUI\RiddleMeThisUI.csproj", "{6F1E78D0-FA5D-4C85-A9A3-06DD920843C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

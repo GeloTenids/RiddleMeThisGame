@@ -60,7 +60,7 @@ namespace RiddleMeThisUI
             }
 
 
-            foreach (var riddles in riddleProcess.getRiddle())
+            foreach (var riddles in riddleProcess.getRiddle()) //Retrieve questions
             {
                 if (riddles.number == 1)
                 {
@@ -119,7 +119,7 @@ namespace RiddleMeThisUI
                     
                 }
             }
-
+            //Score
             point.score = score;
             userProcess.UpdateScore(user.ToLower(), point);
             int currentScore = Convert.ToInt32(userProcess.getScore(user).score);
@@ -139,80 +139,6 @@ namespace RiddleMeThisUI
             {
                 Console.WriteLine("??");
             }
-            //foreach (var userScore in riddleProcess.setUserAndScore(name, score))
-            //{
-            //         if (userScore.points.score == userScore.points.maxScore)
-            //         {
-            //             Console.WriteLine("\n\nEXCELLENT " + userScore.userName.ToUpper() + "! YOUR SCORE IS " 
-            //                 + userScore.points.score + "/" + userScore.points.maxScore); break;
-
-            //         }
-            //         else if (userScore.points.score == 2)
-            //         {
-            //             Console.WriteLine("\n\nGOOD JOB " + userScore.userName.ToUpper() + ", YOUR SCORE IS " 
-            //                 + userScore.points.score + "/" + userScore.points.maxScore); break;
-            //         }
-            //         else if (userScore.points.score <= 1)
-            //         {
-            //             Console.WriteLine("\n\nNICE TRY " + userScore.userName.ToUpper() + ", YOUR SCORE IS " 
-            //                 + userScore.points.score + "/" + userScore.points.maxScore); break;
-            //         }
-            //         else
-            //         {
-            //             Console.WriteLine("??"); 
-            //         }
-            //}
-        }
-        private static string Login() 
-        {
-            RiddleProcess riddleProcess = new RiddleProcess();
-            UserProcess userProcess = new UserProcess();
-            Points point = new Points();
-            string user = null;
-
-            Console.Write("RIDDLE ME THIS\nA. LOAD GAME\nB. NEW GAME\nENTER LETTER: ");
-            char choice = Convert.ToChar(Console.ReadLine());
-
-            if (choice.Equals('a') || choice.Equals('A'))
-            {
-                foreach (var users in userProcess.getUser())
-                {
-                    Console.WriteLine(users.userName.ToUpper() + "\n");
-                }
-                Console.Write("CHOOSE YOUR USER: ");
-                user = Console.ReadLine();
-
-                if (userProcess.verifyUser(user.ToLower()))
-                {
-                    Console.WriteLine("CURRENT SCORE: " + userProcess.getScore(user).score);
-                    point.score = userProcess.getScore(user).score;
-                }
-                else 
-                {
-                    Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
-                    Login();
-                }
-            }
-            else if (choice.Equals('B') || choice.Equals('b'))
-            {
-                Console.Write("ENTER YOUR NAME: ");
-                user = Console.ReadLine();
-                if (userProcess.verifyUser(user.ToLower()) == true)
-                {
-                    Console.WriteLine("EXISTING USER!");
-                }
-                else if (userProcess.verifyUser(user.ToLower()) == false)
-                {
-                    userProcess.AddUserAndScore(user.ToLower(), point);
-                    Console.WriteLine("WELCOME " + user.ToUpper() + "!");
-                }
-            }
-            else 
-            {
-                Console.WriteLine("CHOOSE A LETTER, DUMDUM");
-                Login();
-            }
-            return user;
         }
     }
 }
