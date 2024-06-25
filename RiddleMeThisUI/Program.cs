@@ -220,27 +220,5 @@ namespace RiddleMeThisUI
                 Console.WriteLine("??");
             }
         }
-        private static void ScoreCount(string user, Points point)
-        {
-            UserProcess userProcess = new UserProcess();
-            userProcess.UpdateScore(user.ToLower(), point);
-            //int currentScore = Convert.ToInt32(userProcess.getScore(user).score);
-            if (Convert.ToInt32(userProcess.getScore(user).score) == 3)
-            {
-                Console.WriteLine("EXCELLENT " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
-            }
-            else if (Convert.ToInt32(userProcess.getScore(user).score) == 2)
-            {
-                Console.WriteLine("GOOD JOB " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
-            }
-            else if (Convert.ToInt32(userProcess.getScore(user).score) <= 1)
-            {
-                Console.WriteLine("NICE TRY " + user + "! YOUR SCORE IS " + userProcess.getScore(user).score + " /3");
-            }
-            else
-            {
-                Console.WriteLine("??");
-            }
-        }
     }
 }
