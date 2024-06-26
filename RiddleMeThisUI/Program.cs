@@ -16,161 +16,108 @@ namespace RiddleMeThisUI
             int score = 0;
             string user = null;
 
-            try 
-            { 
-                Console.WriteLine("                                              ");
-                Console.WriteLine("    _________                                 ");
-                Console.WriteLine("   /  _____  \\                               ");
-                Console.WriteLine("  /  /     \\  \\                             ");
-                Console.WriteLine(" |  |       |  |                              ");
-                Console.WriteLine("  \\  \\_____/  /                             ");
-                Console.WriteLine("   \\_________/                               ");
-                Console.WriteLine("   /  _____  \\                               ");
-                Console.WriteLine("  RIDDLE ME THIS                              ");
-                Console.WriteLine(" |A. CHOOSE USER                              ");
-                Console.WriteLine("  B. NEW USER \\                              ");
-                Console.WriteLine("  C. DELETE USER\\                              ");
-                Console.Write("   \\_CHOOSE===: ");
-                char choice = Convert.ToChar(Console.ReadLine());
+            bool validInput = false;
 
-                if (choice.Equals('a') || choice.Equals('A'))
-                {
-                    Console.WriteLine("\nUSERS:\n");
-
-                    foreach (var users in userProcess.getUser())
-                    {
-                        Console.WriteLine("* " + users.userName.ToUpper() + "\n");
-                    }
-                    Console.Write("CHOOSE YOUR USER: ");
-                    user = Console.ReadLine();
-
-                    if (userProcess.verifyUser(user.ToLower()))
-                    {
-                        Console.WriteLine("CURRENT SCORE: " + userProcess.getScore(user).score);
-                        point.score = userProcess.getScore(user).score;
-                    }
-                    else
-                    {
-                        Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
-                        Main(args);
-                    }
-                }
-                else if (choice.Equals('B') || choice.Equals('b'))
-                {
-                    Console.Write("\nENTER YOUR NAME: ");
-                    user = Console.ReadLine();
-                    if (userProcess.verifyUser(user.ToLower()) == true)
-                    {
-                        Console.WriteLine("EXISTING USER!");
-                    }
-                    else if (userProcess.verifyUser(user.ToLower()) == false)
-                    {
-                        userProcess.AddUserAndScore(user.ToLower(), point);
-                        Console.WriteLine("WELCOME " + user.ToUpper() + "!");
-                    }
-                }
-                else if (choice.Equals('C') || choice.Equals('c'))
-                {
-                    Console.WriteLine("\nUSERS:\n");
-
-                    foreach (var users in userProcess.getUser())
-                    {
-                        Console.WriteLine("* " + users.userName.ToUpper() + "\n");
-                    }
-                    Console.Write("CHOOSE USER TO REMOVE: ");
-                    user = Console.ReadLine();
-
-                    if (userProcess.verifyUser(user.ToLower()))
-                    {
-                        if (userProcess.DeleteUser(user.ToLower()))
-                        {
-                            Console.WriteLine("USER REMOVED...");
-                            Main(args);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
-                        Main(args);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("CHOOSE A LETTER, DUMDUM");
-                    Main(args);
-                }
-            }
-            catch (FormatException)
+            while (!validInput)
             {
-                Console.WriteLine("\nENTER A LETTER, DUMDUM");
-                Main(args);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("\nERROR " + ex.Message);
-                Main(args);
-            }
+                try
+                {
+                    Console.WriteLine("                                              ");
+                    Console.WriteLine("    _________                                 ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  /  /     \\  \\                             ");
+                    Console.WriteLine(" |  |       |  |                              ");
+                    Console.WriteLine("  \\  \\_____/  /                             ");
+                    Console.WriteLine("   \\_________/                               ");
+                    Console.WriteLine("   /  _____  \\                               ");
+                    Console.WriteLine("  RIDDLE ME THIS                              ");
+                    Console.WriteLine(" |A. CHOOSE USER                              ");
+                    Console.WriteLine("  B. NEW USER \\                              ");
+                    Console.WriteLine("  C. DELETE USER\\                              ");
+                    Console.Write("   \\_CHOOSE===: ");
+                    char choice = Convert.ToChar(Console.ReadLine());
 
+                    switch (choice)
+                    {
+                        case 'A':
+                        case 'a':
+                            Console.WriteLine("\nUSERS:\n");
+
+                            foreach (var users in userProcess.getUser())
+                            {
+                                Console.WriteLine("* " + users.userName.ToUpper() + "\n");
+                            }
+                            Console.Write("CHOOSE YOUR USER: ");
+                            user = Console.ReadLine();
+
+                            if (userProcess.verifyUser(user.ToLower()))
+                            {
+                                Console.WriteLine("CURRENT SCORE: " + userProcess.getScore(user).score);
+                                point.score = userProcess.getScore(user).score;
+                                validInput = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
+                            }
+                            break;
+
+                        case 'B':
+                        case 'b':
+                            Console.Write("\nENTER YOUR NAME: ");
+                            user = Console.ReadLine();
+                            if (userProcess.verifyUser(user.ToLower()))
+                            {
+                                Console.WriteLine("EXISTING USER!");
+                            }
+                            else
+                            {
+                                userProcess.AddUserAndScore(user.ToLower(), point);
+                                Console.WriteLine("WELCOME " + user.ToUpper() + "!");
+                                validInput = true;
+                            }
+                            break;
+
+                        case 'C':
+                        case 'c':
+                            Console.WriteLine("\nUSERS:\n");
+
+                            foreach (var users in userProcess.getUser())
+                            {
+                                Console.WriteLine("* " + users.userName.ToUpper() + "\n");
+                            }
+                            Console.Write("CHOOSE USER TO REMOVE: ");
+                            user = Console.ReadLine();
+
+                            if (userProcess.verifyUser(user.ToLower()))
+                            {
+                                if (userProcess.DeleteUser(user.ToLower()))
+                                {
+                                    Console.WriteLine("USER REMOVED...");
+                                    validInput = false;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("WRONG INPUT OR NOT EXISTING!");
+                            }
+                            break;
+
+                        default:
+                            Console.WriteLine("\nCHOOSE A LETTER, DUMDUM");
+                            break;
+                    }
+                }
+                catch 
+                {
+                    Console.WriteLine("\nWRONG INPUT!");
+                }
+            }
+        
                 foreach (var riddles in riddleProcess.getRiddle()) //Retrieve questions
-            {
-                if (riddles.number == 1)
                 {
-                    Console.WriteLine("    _________                                 ");
-                    Console.WriteLine("   /  _____  \\                               ");
-                    Console.WriteLine("  /  /     \\  \\                             ");
-                    Console.WriteLine(" |  |       |  |                              ");
-                    Console.WriteLine("  \\  \\_____/  /                             ");
-                    Console.WriteLine("   \\_________/                               ");
-                    Console.WriteLine("   /  _____  \\                               ");
-                    Console.WriteLine("  RIDDLE ME THIS                              ");
-                    Console.WriteLine(" |FIRST RIDDLE:                              ");
-                    Console.WriteLine($" |{riddles.question}\\                              ");
-                    Console.Write(" \\ ANSWER===: ");
-                    string answer = Console.ReadLine();
-
-                    bool result = riddleProcess.getAnswer(answer);
-
-                    if (result == true)
-                    {
-                        Console.WriteLine("\n" + answer.ToUpper() + " IS CORRECT");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
-                    }
-                }
-                else if (riddles.number == 2)
-                {
-                    Console.WriteLine("    _________                                 ");
-                    Console.WriteLine("   /  _____  \\                               ");
-                    Console.WriteLine("  /  /     \\  \\                             ");
-                    Console.WriteLine(" |  |       |  |                              ");
-                    Console.WriteLine("  \\  \\_____/  /                             ");
-                    Console.WriteLine("   \\_________/                               ");
-                    Console.WriteLine("   /  _____  \\                               ");
-                    Console.WriteLine("  RIDDLE ME THIS                              ");
-                    Console.WriteLine(" |FIRST RIDDLE:                              ");
-                    Console.WriteLine($" |{riddles.question}\\                              ");
-                    Console.Write(" \\ ANSWER===: ");
-                    string answer = Console.ReadLine();
-
-                    bool result = riddleProcess.getAnswer(answer);
-
-                    if (result == true)
-                    {
-                        Console.WriteLine("\n" + answer.ToUpper() + " IS CORRECT");
-                        score++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
-                    }
                     
-                }
-
-                else if (riddles.number == 3)
-                {
+                    
                     Console.WriteLine("    _________                                 ");
                     Console.WriteLine("   /  _____  \\                               ");
                     Console.WriteLine("  /  /     \\  \\                             ");
@@ -179,27 +126,29 @@ namespace RiddleMeThisUI
                     Console.WriteLine("   \\_________/                               ");
                     Console.WriteLine("   /  _____  \\                               ");
                     Console.WriteLine("  RIDDLE ME THIS                              ");
-                    Console.WriteLine(" |FIRST RIDDLE:                              ");
+                    Console.WriteLine($" |RIDDLE {riddles.number}:                              ");
                     Console.WriteLine($" |{riddles.question}\\                              ");
                     Console.Write(" \\ ANSWER===: ");
                     string answer = Console.ReadLine();
 
                     bool result = riddleProcess.getAnswer(answer);
 
-                    if (result == true)
+                    if (result)
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS CORRECT");
                         score++;
-                        break;
                     }
                     else
                     {
                         Console.WriteLine("\n" + answer.ToUpper() + " IS WRONG");
+                    }
+
+                    if (riddles.number == 3)
+                    {
                         break;
                     }
-                    break;
                 }
-            }
+            
             //Score
             point.score = score;
             userProcess.UpdateScore(user.ToLower(), point);
