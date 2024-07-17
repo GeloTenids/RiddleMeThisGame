@@ -26,11 +26,16 @@ namespace RiddleMeThisBL
             }
             return result;
         }
-        public void UpdateScore(string user, Points score) 
+        public bool UpdateScore(string user, Points score) 
         {
+            bool result = new bool();
             UserData userData = new UserData();
             User users = new User { userName = user, points = score };
-            userData.UpdateUser(users);
+            if (userData.UpdateUser(users) != 0) 
+            {
+                result = true;
+            }
+            return result;
         }
         public bool DeleteUser(string user)
         {

@@ -27,20 +27,20 @@ namespace RiddleMeThisDL
             return riddles;
         }
 
-        //public int AddUser(User user)
-        //{
-        //    return sqlData.AddUser(user.userName, user.points);
-        //}
+        public int AddRiddle(Riddles riddle)
+        {
+            return sqlData.AddRiddle(riddle.number, riddle.question, riddle.answer);
+        }
 
-        //public int UpdateUser(User user)
-        //{
-        //    return sqlData.UpdateUser(user.userName, user.points);
-        //}
+        public int UpdateRiddle(Riddles riddle)
+        {
+            return sqlData.UpdateRiddle(riddle.number, riddle.question, riddle.answer);
+        }
 
-        //public int DeleteUser(User user)
-        //{
-        //    return sqlData.DeleteUser(user.userName);
-        //}
+        public int DeleteRiddle(Riddles riddle)
+        {
+            return sqlData.DeleteRiddle(riddle.number);
+        }
 
     }
 }
