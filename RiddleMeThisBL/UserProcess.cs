@@ -17,21 +17,24 @@ namespace RiddleMeThisBL
         }
         public bool AddUserAndScore(string user, Points score)
         {
+            smtpUserService smtp = new smtpUserService();
             bool result = false;
             UserData data = new UserData();
             User users = new User { userName = user, points = score };
 
-            if (data.AddUser(users) > 0 ) {
+            if (data.AddUser(users) > 0 && smtp.AddUser(user) == true) {
                 result = true;
             }
+            
             return result;
         }
         public bool UpdateScore(string user, Points score) 
         {
+            smtpUserService smtp = new smtpUserService();
             bool result = new bool();
             UserData userData = new UserData();
             User users = new User { userName = user, points = score };
-            if (userData.UpdateUser(users) != 0) 
+            if (userData.UpdateUser(users) != 0 && smtp.UpdateUser(user, users.points.score)) 
             {
                 result = true;
             }
@@ -39,10 +42,11 @@ namespace RiddleMeThisBL
         }
         public bool DeleteUser(string user)
         {
+            smtpUserService smtp = new smtpUserService();
             bool result = false;
             UserData userData = new UserData();
             User users = new User { userName = user};
-            if (userData.DeleteUser(users) == 1) 
+            if (userData.DeleteUser(users) == 1 && smtp.DeleteUser(user)) 
             {
                 result = true;
             }

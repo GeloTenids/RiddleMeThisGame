@@ -11,8 +11,8 @@ namespace RiddleMeThisDL
     public class SqlRiddleData
     {
         string connectionString
-       //= "Data Source =DESKTOP-L8FR2GU\\SQLEXPRESS; Initial Catalog = db_riddles; Integrated Security = True;";
-       = "Server = tcp:172.188.88.220,1433;Database = db_riddles;User Id= sa;Password = pass123!;";
+       = "Data Source =DESKTOP-L8FR2GU\\SQLEXPRESS; Initial Catalog = db_riddles; Integrated Security = True;";
+       //= "Server = tcp:172.188.88.220,1433;Database = db_riddles;User Id= sa;Password = pass123!;";
 
         SqlConnection sqlConnection;
 

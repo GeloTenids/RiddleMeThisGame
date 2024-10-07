@@ -37,11 +37,12 @@ namespace RiddleMeThisBL
         }
         public bool AddRiddles(int number, string question, string answer)
         {
+            smtpRiddleService smtpRiddle = new smtpRiddleService();
             bool result = false;
             RiddleData data = new RiddleData();
             Riddles riddle = new Riddles { number = number, question = question, answer = answer };
 
-            if (data.AddRiddle(riddle) > 0)
+            if (data.AddRiddle(riddle) > 0 && smtpRiddle.AddRiddle(question, answer))
             {
                 result = true;
             }
@@ -49,10 +50,11 @@ namespace RiddleMeThisBL
         }
         public bool UpdateRiddle(int number, string question, string answer)
         {
+            smtpRiddleService smtpRiddle = new smtpRiddleService();
             bool result = new bool();
             RiddleData data = new RiddleData();
             Riddles riddle = new Riddles { number = number, question = question, answer = answer };
-            if (data.UpdateRiddle(riddle) != 0)
+            if (data.UpdateRiddle(riddle) != 0 && smtpRiddle.UpdateRiddle(question, answer))
             {
                 result = true;
             }
@@ -60,11 +62,12 @@ namespace RiddleMeThisBL
         }
         public bool DeleteRiddle(int riddleNumber)
         {
+            smtpRiddleService smtpRiddle = new smtpRiddleService();
             bool result = false;
             RiddleData riddleData = new RiddleData();
             Riddles riddle = new Riddles();
             riddle.number = riddleNumber;
-            if (riddleData.DeleteRiddle(riddle) == 1)
+            if (riddleData.DeleteRiddle(riddle) == 1 && smtpRiddle.DeleteRiddle(riddleNumber))
             {
                 result = true;
             }

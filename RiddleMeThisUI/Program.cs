@@ -72,9 +72,11 @@ namespace RiddleMeThisUI
                             }
                             else
                             {
-                                userProcess.AddUserAndScore(user.ToLower(), point);
-                                Console.WriteLine("WELCOME " + user.ToUpper() + "!");
-                                validInput = true;
+                                if(userProcess.AddUserAndScore(user.ToLower(), point)) 
+                                {
+                                    Console.WriteLine("WELCOME " + user.ToUpper() + "!");
+                                    validInput = true;
+                                }
                             }
                             break;
 
