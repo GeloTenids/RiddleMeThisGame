@@ -73,7 +73,7 @@ namespace RiddleMeThisBL
                 client.Disconnect(true);
             }
         }
-        public bool UpdateRiddle(string question, int answer)
+        public bool UpdateRiddle(string question, string answer)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("TheDiddler", "do-not-reply@Diddler.com"));
