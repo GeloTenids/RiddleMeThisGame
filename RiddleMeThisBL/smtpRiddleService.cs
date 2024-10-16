@@ -15,7 +15,7 @@ namespace RiddleMeThisBL
         {
             client = new SmtpClient();
             client.Connect("sandbox.smtp.mailtrap.io", 2525, MailKit.Security.SecureSocketOptions.StartTls);
-            client.Authenticate("318d0b1fc98a79", "330b43def58493");
+            client.Authenticate("f2e547fa3d4428", "fd0e08870dd772");
         }
         public bool AddRiddle(string question, string answer)
         {
