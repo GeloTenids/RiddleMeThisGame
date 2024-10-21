@@ -12,25 +12,25 @@ namespace RiddleMeThisBL
 {
     public class RiddleProcess
     {
-        public bool getAnswer(string answer) 
+        public bool getAnswer(string answer)
         {
             RiddleData riddleData = new RiddleData();
             bool result = new bool();
-            foreach(var answers in riddleData.GetRiddles()) 
+            foreach (var answers in riddleData.GetRiddles())
             {
-                if(answers.answer.Equals(answer.ToLower())) 
+                if (answers.answer.Equals(answer.ToLower()))
                 {
                     result = true;
                     break;
                 }
-                else 
+                else
                 {
                     result = false;
                 }
             }
             return result;
         }
-        public List<Riddles> getRiddle() 
+        public List<Riddles> getRiddle()
         {
             RiddleData riddleData = new RiddleData();
             return riddleData.GetRiddles();
@@ -41,10 +41,13 @@ namespace RiddleMeThisBL
             bool result = false;
             RiddleData data = new RiddleData();
             Riddles riddle = new Riddles { number = number, question = question, answer = answer };
-
+            if (verifyRiddle(riddle)) 
+            {
+                return result = false;
+            }
             if (data.AddRiddle(riddle) > 0 && smtpRiddle.AddRiddle(question, answer))
             {
-                result = true;
+                return result = true;
             }
             return result;
         }
@@ -70,6 +73,19 @@ namespace RiddleMeThisBL
             if (riddleData.DeleteRiddle(riddle) == 1 && smtpRiddle.DeleteRiddle(riddleNumber))
             {
                 result = true;
+            }
+            return result;
+        }
+        public bool verifyRiddle(Riddles givenRiddle) 
+        {
+            bool result = new bool();
+            foreach (var riddles in getRiddle()) 
+            {
+                if (riddles.number == givenRiddle.number && riddles.question.Equals(givenRiddle.question.ToLower())) 
+                {
+                    result = true;
+                    break;
+                }
             }
             return result;
         }

@@ -21,9 +21,13 @@ namespace RiddleMeThisBL
             bool result = false;
             UserData data = new UserData();
             User users = new User { userName = user, points = score };
-
-            if (data.AddUser(users) > 0 && smtp.AddUser(user) == true) {
-                result = true;
+            if (verifyUser(user))
+            {
+                return result = false;
+            }
+            if (data.AddUser(users) > 0 && smtp.AddUser(user) == true)
+            {
+                return result = true;
             }
             
             return result;
@@ -79,5 +83,6 @@ namespace RiddleMeThisBL
             }
             return result;
         }
+
     }
 }
