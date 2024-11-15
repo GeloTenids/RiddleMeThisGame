@@ -1,0 +1,154 @@
+[
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "AddRiddle",
+    "RelativePath": "api/user/add-riddle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "riddle",
+        "Type": "Riddle.API.Riddles",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "AddUser",
+    "RelativePath": "api/user/add-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Riddle.API.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "DeleteRiddle",
+    "RelativePath": "api/user/delete-riddle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "riddle",
+        "Type": "Riddle.API.Riddles",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/user/delete-user",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Riddle.API.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "GetRiddles",
+    "RelativePath": "api/user/get-riddles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Riddle.API.Riddles, Riddle.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "GetUsers",
+    "RelativePath": "api/user/get-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Riddle.API.Users, Riddle.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "UpdateRiddle",
+    "RelativePath": "api/user/update-riddle",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "riddle",
+        "Type": "Riddle.API.Riddles",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/user/update-user",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Riddle.API.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Riddle.API.Controllers.RiddleMeThisController",
+    "Method": "UploadProfilePhoto",
+    "RelativePath": "api/user/upload-profile-photo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProfilePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
